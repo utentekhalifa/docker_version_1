@@ -1,11 +1,11 @@
 {
   "name": "devops-api",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
-    "mongodb": "^6.0.0"
+    "mongodb": "^4.0.0"
   }
 }

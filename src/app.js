@@ -3,10 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const { MongoClient } = require('mongodb');
 
-const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongodb:27017';
+const PORT = 3000;
+const MONGO_URI = process.env.MONGO_URI;
 
-// Funzione per leggere i dati inviati dal form (POST)
 const parseBody = (req) => {
   return new Promise((resolve) => {
     let body = '';
@@ -24,7 +23,6 @@ const parseBody = (req) => {
 
 const server = http.createServer(async (req, res) => {
   
-  // 1. Gestione dell'immagine statica (il wow.jpg)
   if (req.url === '/wow.jpg') {
     const imagePath = path.join(__dirname, '../immagini/wow.jpg');
     fs.readFile(imagePath, (err, data) => {
@@ -43,10 +41,10 @@ const server = http.createServer(async (req, res) => {
   try {
     client = new MongoClient(MONGO_URI);
     await client.connect();
-    const db = client.db('app_db');
+    
+    const db = client.db('devopsdb');
     const collection = db.collection('entries');
 
-    // 2. SALVATAGGIO DATI (POST)
     if (req.method === 'POST' && req.url === '/save') {
       const formData = await parseBody(req);
       await collection.insertOne({ 
@@ -55,13 +53,11 @@ const server = http.createServer(async (req, res) => {
       });
       await client.close();
 
-      // Ritorna alla home dopo il salvataggio
       res.writeHead(302, { 'Location': '/' });
       res.end();
       return;
     }
 
-    // 3. VISUALIZZAZIONE PAGINA HTML + DATI DA MONGO (GET)
     if (req.method === 'GET' && req.url === '/') {
       const items = await collection.find({}).sort({ createdAt: -1 }).toArray();
       await client.close();
@@ -116,6 +112,4 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Server avviato sulla porta ${PORT}`);
-});
+server.listen(PORT);
