@@ -23,8 +23,8 @@ const parseBody = (req) => {
 
 const server = http.createServer(async (req, res) => {
   
-  if (req.url === '/wow.jpg') {
-    const imagePath = path.join(__dirname, '../immagini/wow.jpg');
+  if (req.url === '/images.jpg') {
+    const imagePath = path.join(__dirname, '../immagini/images.jpg');
     fs.readFile(imagePath, (err, data) => {
       if (err) {
         res.writeHead(404);
@@ -81,8 +81,8 @@ const server = http.createServer(async (req, res) => {
         </head>
         <body>
           <div class="card">
-            <img src="/wow.jpg" alt="wow">
-            <h2>Inserisci un nuovo record</h2>
+            <img src="/images.jpg" alt="wow">
+            <h2>INSERISCI UN NUOVO MESSAGGIO DA SALVARE</h2>
             <form action="/save" method="POST">
               <input type="text" name="messaggio" placeholder="Scrivi un messaggio vedrai che succede qualcosa ;)" required>
               <button type="submit">cliccami!</button>
@@ -90,7 +90,7 @@ const server = http.createServer(async (req, res) => {
           </div>
 
           <div class="card">
-            <h3>Storico salvato in MongoDB così non ci dimentichiamo</h3>
+            <h3>Storico salvato in MongoDB ecco di seguito:</h3>
             <ul>
               ${items.length === 0 ? '<li>Nessun dato presente. scrivici qualcosa...</li>' : items.map(i => `<li><b>${i.messaggio}</b> <small style="color:gray;">(${new Date(i.createdAt).toLocaleTimeString()})</small></li>`).join('')}
             </ul>

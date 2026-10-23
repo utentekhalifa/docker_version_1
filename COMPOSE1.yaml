@@ -1,6 +1,6 @@
 services:
   app:
-    build: .
+    build: 532523613099.dkr.ecr.us-east-1.amazonaws.com/appjs:latest
     ports:
       - "3000:3000"
     environment:
