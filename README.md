@@ -19,8 +19,7 @@ Particolare attenzione è stata dedicata alla protezione dei dati sensibili e al
 
 Il flusso di gestione dell'applicazione si articola in due fasi distinte a livello di configurazione Docker Compose:
 
-# 1.
-Inizialmente, il servizio dell'applicazione Node.js nel file `COMPOSE1.yaml` è stato configurato per utilizzare il contesto di build locale (`build: .`), consentendo di testare le modifiche al codice e la connessione a MongoDB direttamente sul proprio ambiente di sviluppo.
+1. Inizialmente, il servizio dell'applicazione Node.js nel file `COMPOSE1.yaml` è stato configurato per utilizzare il contesto di build locale (`build: .`), consentendo di testare le modifiche al codice e la connessione a MongoDB direttamente sul proprio ambiente di sviluppo.
 
 
 2. Transizione all'immagine remota su AWS ECR
