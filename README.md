@@ -53,3 +53,8 @@ Con il seguente risultato finale:
 
 ![alt text](immaginiRM/results.png)
 
+Autore
+
+**Khalifa Belfaize**
+
+[![AWS Certified Solutions Architect – Associate](immaginiRM/aws-certified-solutions-architect-associate.png)](https://www.credly.com/badges/84adf2b3-7281-4c3e-922a-4feeab1fac13/public_url)
