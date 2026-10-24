@@ -24,11 +24,9 @@ Il flusso di gestione dell'applicazione si articola in due fasi distinte a livel
 
 2. Transizione all'immagine remota su AWS ECR
 
-Una volta validato il comportamento dell'applicazione, l'immagine custom è stata taggata e pubblicata su Amazon ECR. Questa separazione permette di disaccoppiare il codice sorgente dall'esecuzione dell'infrastruttura, consentendo al Compose di attingere direttamente al registro remoto:
+Una volta validato il comportamento dell'applicazione, l'immagine custom è stata taggata e pubblicata su Amazon ECR. Questa separazione permette di disaccoppiare il codice sorgente dall'esecuzione dell'infrastruttura, consentendo al Compose di attingere direttamente al registro remoto:    Autenticazione ed esecuzione del push su ECR:
 
-    Autenticazione ed esecuzione del push su ECR:
-    dopo aver creato la repository da console (consultando la documentazione ufficiale AWS e utilizzo di credenziali per utilizzo della cli locale) creare la repository e caricare l'immagine utilizzando anche i passaggi forniti alla crazione per collegarsi e creare una immagine dedicata.
-
+dopo aver creato la repository direttamente dalla console AWS (consultando la documentazione ufficiale e configurando le credenziali per la CLI locale), sono stati seguiti i passaggi forniti durante la creazione della risorsa per autenticarsi, generare l'immagine dedicata e caricarla sul registro remoto.
 
 - Autenticazione del client Docker tramite AWS CLI:
 aws ecr get-login-password --region <tua-regione> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<regione>.amazonaws.com
