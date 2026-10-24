@@ -12,7 +12,7 @@ Particolare attenzione è stata dedicata alla protezione dei dati sensibili e al
 * **File di environment:** Utilizzo di un file `.env` per le credenziali di connessione al database (escluse dal controllo di versione) affiancato da un semplice template `.env.example` .
 * **Esclusioni mirate:** Configurazione rigorosa di `.gitignore` e `.dockerignore` per escludere `node_modules/`, file di log e credenziali, preservando README, Dockerfile e configurazioni compose.
 
-![alt text](image.png)
+![alt text](immaginiRM/image.png)
 
 
 ## Strategia di Build Locale e Migrazione su AWS ECR
@@ -44,15 +44,15 @@ docker push <account-id>.dkr.ecr.<regione>[.amazonaws.com/tuo-repo:latest](https
 
     Aggiornamento del COMPOSE1.yaml per puntare all'URI dell'immagine su ECR anziché al contesto di build locale.
 
-![alt text](immagini/push.png)
-![alt text](immagini/push2.png)
+![alt text](immaginiRM/push.png)
+![alt text](immaginiRM/push2.png)
 
 
 L'infrastruttura separa chiaramente i servizi di base (MongoDB e Mongo Express prelevati dai registry pubblici) dall'applicazione custom Node.js, quest'ultima pubblicata su Amazon ECR sotto forma di repository privato per simulare una immagine creata in ambito aziendale e che quindi non si vuole rendere pubblica.
 
-![alt text](immagini/repo.png)
+![alt text](immaginiRM/repo.png)
 
 Con il seguente risultato finale:
 
-![alt text](immagini/results.png)
+![alt text](immaginiRM/results.png)
 
